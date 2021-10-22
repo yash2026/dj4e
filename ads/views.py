@@ -84,7 +84,12 @@ def stream_file(request, pk):
     response.write(ad.picture)
     return response
 
-
+class CommentCreateView(LoginRequiredMixin, View):
+    def post(self, request, pk) :
+        f = get_object_or_404(Ad, id=pk)
+        comment = Comment(text=request.POST['comment'], owner=request.user, ad=f)
+        comment.save()
+        return redirect(reverse('ads:ad_detail', args=[pk]))
 
 
 class CommentDeleteView(OwnerDeleteView):
