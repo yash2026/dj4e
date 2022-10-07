@@ -25,11 +25,7 @@
                 <li><a href="{% url 'logout' %}?next={% url 'ads:all' %}">Logout</a></li>
             </ul>
         </li>
-        {% else %}
-        <li>
-        <a href="{% url 'login' %}?next={% url 'ads:all' %}">Login</a>
-        </li>
-        {% endif %}
+        
     </ul>
   </div>
 </nav>
